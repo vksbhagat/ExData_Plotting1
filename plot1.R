@@ -1,0 +1,12 @@
+#extract the gz file and then read it, if you don't want to extract it then read it
+data <- read.csv('./household_power_consumption.txt', sep=";", na.strings="?")
+
+#make subset by discarding all rows but those of days 1/2/2007 and 2/2/2007
+data <- subset(data, data$Date == "1/2/2007" | data$Date == "2/2/2007")
+
+# plot histogram
+png("plot1.png")
+hist(data$Global_active_power, col = "red", main = "Global Active Power", xlab = "Global Active Power(kilowatts)", ylab = "Frequency")
+
+# copy to file in png format
+dev.off()
